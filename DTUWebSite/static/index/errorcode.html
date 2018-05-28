@@ -1,0 +1,76 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>错误代码</title>
+<link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="./js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="./css/style.css" rel='stylesheet' type='text/css' />
+<link href='./css/fonts.css' rel='stylesheet' type='text/css'>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+	<!--- Header Starts Here --->
+	<div class="header">
+		<div class="container">
+			<div class="logo">
+				<a href="index.html"><img src="./images/logo.png" alt=""/></a>
+			</div>
+			<div class="navigation">
+				<span class="menu"><img src="./images/nav.png" alt="" /></span>
+				<ul class="nav">
+					<li><a href="index.html">首页</a></li> <lable>/</lable>
+					<li><a href="apidoc.html">开发文档</a></li> <lable>/</lable>
+					<li><a href="errorcode.html">错误代码</a></li> <lable>/</lable>
+					<li><a href="apidownload.html">API示例代码下载</a></li> <lable>/</lable>
+					<li><a href="webdoc.html">网站后台使用文档</a></li> <lable>/</lable>
+					<li><a href="http://www.kqdama.com:8080/login" target="_blank">后台登陆</a></li>
+					<li><a href="price.html">价格表</a></li>
+				</ul>
+			</div>
+			<script>
+					$( "span.menu" ).click(function() {
+					  $( ".navigation ul.nav" ).slideToggle( "slow", function() {
+					    // Animation complete.
+					  });
+					});
+				</script>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- Content starts Here --->
+	<div class="content">
+		<div class="container">
+			<span class="line"></span><a href="#" class="line-anchor">错误代码</a><span class="line"></span>
+				<div class="clearfix"></div>
+			<div class="content-middle">
+				
+<p>1001  作者用户名或密码错误，或作者token传递错误 <br>
+1002  用户码数不足，分两种情况：1.调用识别接口时子用户码数不足；2.作者给子用户增加码数时，作者剩余码数不足 <br>
+1003  客户端参数传递错误 <br>
+1004  服务器其他错误 <br>
+1005  DLL客户端错误（例如：网络连接超时） <br>
+1006  新加子用户时，当前子用户名已存在 <br>
+1007  删除、修改子用户时，子用户名不存在 <br>
+1008  子用户密码错误 <br>
+1009  修改子用户时，子用户码数不足，比如子用户只有100码数，而修改操作要减掉子用户500码数，则会报此错误<br>
+1011  服务器内部错误<br>
+1012  服务器内部错误，500 error<br>
+1013  子用户被冻结，不能进行修改、删除</p>
+				</div>
+				
+		</div>
+	</div>
+	
+</body>
+</html>

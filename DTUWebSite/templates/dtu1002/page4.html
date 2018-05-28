@@ -1,0 +1,413 @@
+$def with (dtuinfo,dtu_id)
+
+<!DOCTYPE html PUBLIC "-//W6C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w6.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset="UTF-5" />
+<title>DTU1002</title>
+<!--                       CSS                       -->
+<!-- Reset Stylesheet -->
+<link rel="stylesheet" href="../static/css/reset.css" type="text/css" media="screen" />
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="../static/css/style.css" type="text/css" media="screen" />
+<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
+<link rel="stylesheet" href="../static/css/invalid.css" type="text/css" media="screen" />
+<!--                       Javascripts                       -->
+<!-- jQuery <script type="text/javascript" src="../static/scripts/jquery2.3.2.min.js"></script> -->
+
+<!-- jQuery Configuration -->
+<script type="text/javascript" src="../static/scripts/simpla.jquery.configuration.js"></script>
+<!-- Facebox jQuery Plugin -->
+<script type="text/javascript" src="../static/scripts/facebox.js"></script>
+<!-- jQuery WYSIWYG Plugin -->
+<script type="text/javascript" src="../static/scripts/jquery.wysiwyg.js"></script>
+<!-- jQuery Datepicker Plugin -->
+<script type="text/javascript" src="../static/scripts/jquery.datePicker.js"></script>
+<script type="text/javascript" src="../static/scripts/jquery.date.js"></script>
+
+<script type="text/javascript">
+
+$dtu_id = 'dtu1001';
+//var url_server = "http://35.166.81.188:8001/";
+var url_server = "http://122.224.118.206:8000/dtu1002/";
+
+var url_page4 = url_server + "page4";
+
+function queryPage1(queryid){
+    var url = url_server + "page1?reset1=0&reset2=0&dtuid="+queryid+"&mcr_angle_set_1=-1&mcr_angle_set_2=-1&mcr_auto_flag_set_1=-1&mcr_auto_flag_set_2=-1";
+    window.open(url,"_self");
+}
+function queryPage2(queryid){
+    var url = url_server +  "page2?dtuid="+queryid;
+    window.open(url,"_self");
+}
+function queryPage3(queryid){
+    var url = url_server + "page3?starttime=-1&endtime=-1&dtuid="+queryid;
+    window.open(url,"_self");
+}
+function queryPage4(queryid){
+    var url = url_server + "page4?dtuid="+queryid;
+    window.open(url,"_self");
+}
+
+</script>
+</head>
+
+<body>
+<div id="body-wrapper">
+  <!-- Wrapper for the radial gradient background -->
+  <div id="sidebar">
+    <div id="sidebar-wrapper">
+      <!-- Sidebar with logo and menu -->
+      <!-- Sidebar Profile links -->
+      <ul id="main-nav">
+        <li> 
+          <ul>
+            <li><a onclick="javascript:queryPage1('$dtu_id');">状态显示</a></li>
+            <li><a onclick="javascript:queryPage2('$dtu_id');">历史事件</a></li>
+            <li><a onclick="javascript:queryPage3('$dtu_id');">历史曲线</a></li>
+            <li><a onclick="javascript:queryPage4('$dtu_id');">参数设置</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- End #main-nav -->
+    </div>
+  </div>
+
+  <!-- End #sidebar -->
+  <div id="main-content">
+    <!-- Main Content Section with everything -->
+    <table border=2>
+        <tr>
+            <td>过压/KV</td><td><input id="over_voltage_1"></input></td>
+			<td>过流/A</td><td><input id="over_current_1"></input></td>
+			<td>目标功率因数</td><td><input id="target_power_fator_1"></input></td>
+        </tr>
+        <tr>
+            <td>上限电压/KV</td><td><input id="upper_voltage_1"></input></td>
+			<td>容量/KVar</td><td><input id="capacity_1"></input></td>
+			<td>母线IPT</td><td><input id="bus_1PT_1"></input></td>
+        </tr>
+        <tr>
+            <td>下限电压/KV</td><td><input id="lower_voltage_1"></input></td>
+			<td>延时/ms</td><td><input id="time_delay_1"></input></td>
+			<td>母线ICT</td><td><input id="bus_1CT_1"></input></td>
+        </tr>
+        <tr>
+            <td>欠压/KV</td><td><input id="under_voltage_1"></input></td>
+			<td>稳定时间/s</td><td><input id="stable_time_1"></input></td>
+			<td>MCRIPT</td><td><input id="mcr_1PT_1"></input></td>
+        </tr>
+        <tr>
+            <td>投入门限/KVar</td><td><input id="switch_on_threshold_1"></input></td>
+			<td>最大控制角/度</td><td><input id="max_operating_angle_1"></input></td>
+			<td>MCRICT</td><td><input id="mcr_1CT_1"></input></td>
+        </tr>
+        <tr>
+            <td>不平衡阀值%</td><td><input id="unbalanced_threshold_1"></input></td>
+			<td>功率因数上限</td><td><input id="upper_power_factor_1"></input></td>
+			<td>功率因数延时/s</td><td><input id="time_delay_power_fator_1"></input></td>
+        </tr>
+    </table>
+
+    <table border=2>
+        <tr>
+            <td>过压/KV</td><td><input id="over_voltage_2"></input></td>
+			<td>过流/A</td><td><input id="over_current_2"></input></td><td>目标功率因数</td>
+			<td><input id="target_power_fator_2"></input></td>
+        </tr>
+        <tr>
+            <td>上限电压/KV</td><td><input id="upper_voltage_2"></input></td>
+			<td>容量/KVar</td><td><input id="capacity_2"></input></td><td>母线IPT</td>
+			<td><input id="bus_1PT_2"></input></td>
+        </tr>
+        <tr>
+            <td>下限电压/KV</td><td><input id="lower_voltage_2"></input></td>
+			<td>延时/ms</td><td><input id="time_delay_2"></input></td>
+			<td>母线ICT</td><td><input id="bus_1CT_2"></input></td>
+        </tr>
+        <tr>
+            <td>欠压/KV</td><td><input id="under_voltage_2"></input></td>
+			<td>稳定时间/s</td><td><input id="stable_time_2"></input></td>
+			<td>MCRIPT</td><td><input id="mcr_1PT_2"></input></td>
+        </tr>
+        <tr>
+            <td>投入门限/KVar</td><td><input id="switch_on_threshold_2"></input></td>
+			<td>最大控制角/度</td><td><input id="max_operating_angle_2"></input></td>
+			<td>MCRICT</td><td><input id="mcr_1CT_2"></input></td>
+        </tr>
+        <tr>
+            <td>不平衡阀值%</td><td><input id="unbalanced_threshold_2"></input></td>
+			<td></td><td></td><td></td><td></td><!--td>功率因数上限<input id="upper_power_factor_2"></input><td><td>功率因数延时/s<input id="time_delay_power_fator_2"></input><td-->
+        </tr>
+    </table>
+    <table width="100%" align="center">
+        <tr width="100%">
+            <td align="center" width="33.3%"><button width="100%" class="button" onclick="javascript:usedefaultconfig('$dtu_id');">调用默认</button></td>
+            <td align="center" width="33.3%"><button width="100%" class="button" onclick="javascript:getconfig('$dtu_id');">当前配置</button></td>
+            <td align="center" width="33.3%"><button width="100%" class="button" onclick="javascript:configaction('$dtu_id');">确认配置</button></td>
+        </tr>
+    </table>
+    <table>
+        <tr width="100%">
+            <td align="center" width="25%"><button width="100%" class="button" onclick="javascript:pulseconfig1close('$dtu_id');">I段脉冲闭合</button></td>
+            <td align="center" width="25%"><button width="100%" class="button" onclick="javascript:pulseconfig1open('$dtu_id');">I段脉冲断开</button></td>
+            <td align="center" width="25%"><button width="100%" class="button" onclick="javascript:pulseconfig2close('$dtu_id');">II段脉冲闭合</button></td>
+            <td align="center" width="25%"><button width="100%" class="button" onclick="javascript:pulseconfig2open('$dtu_id');">II段脉冲断开</button></td>
+        </tr>
+    </table>
+    
+    <!-- End .content-box -->
+    <div class="clear"></div>
+    <script>
+        var configflag = 1;
+		
+        function configaction(queryid)
+        { 
+            var over_voltage_1 = document.getElementById("over_voltage_1").value;
+            var over_current_1 = document.getElementById("over_current_1").value;
+            var target_power_fator_1 = document.getElementById("target_power_fator_1").value;
+            var upper_voltage_1 = document.getElementById("upper_voltage_1").value;
+            var capacity_1 = document.getElementById("capacity_1").value;
+            var bus_1PT_1 = document.getElementById("bus_1PT_1").value;
+            var lower_voltage_1 = document.getElementById("lower_voltage_1").value;
+            var time_delay_1 = document.getElementById("time_delay_1").value;
+            var bus_1CT_1 = document.getElementById("bus_1CT_1").value;
+            var under_voltage_1 = document.getElementById("under_voltage_1").value;
+            var stable_time_1 = document.getElementById("stable_time_1").value;
+            var mcr_1PT_1 = document.getElementById("mcr_1PT_1").value;
+            var switch_on_threshold_1 = document.getElementById("switch_on_threshold_1").value;
+            var max_operating_angle_1 = document.getElementById("max_operating_angle_1").value;
+            var mcr_1CT_1 = document.getElementById("mcr_1CT_1").value;
+            var unbalanced_threshold_1 = document.getElementById("unbalanced_threshold_1").value;
+            var upper_power_factor_1 = document.getElementById("upper_power_factor_1").value;
+            var time_delay_power_fator_1 = document.getElementById("time_delay_power_fator_1").value;
+
+            var over_voltage_2 = document.getElementById("over_voltage_2").value;
+            var over_current_2 = document.getElementById("over_current_2").value;
+            var target_power_fator_2 = document.getElementById("target_power_fator_2").value;
+            var upper_voltage_2 = document.getElementById("upper_voltage_2").value;
+            var capacity_2 = document.getElementById("capacity_2").value;
+            var bus_1PT_2 = document.getElementById("bus_1PT_2").value;
+            var lower_voltage_2 = document.getElementById("lower_voltage_2").value;
+            var time_delay_2 = document.getElementById("time_delay_2").value;
+            var bus_1CT_2 = document.getElementById("bus_1CT_2").value;
+            var under_voltage_2 = document.getElementById("under_voltage_2").value;
+            var stable_time_2 = document.getElementById("stable_time_2").value;
+            var mcr_1PT_2 = document.getElementById("mcr_1PT_2").value;
+            var switch_on_threshold_2 = document.getElementById("switch_on_threshold_2").value;
+            var max_operating_angle_2 = document.getElementById("max_operating_angle_2").value;
+            var mcr_1CT_2 = document.getElementById("mcr_1CT_2").value;
+            var unbalanced_threshold_2 = document.getElementById("unbalanced_threshold_2").value;
+
+             var data={
+               'type':1,
+               'dtuid':queryid,
+               'over_voltage_1':over_voltage_1,
+               'over_current_1':over_current_1,
+               'target_power_fator_1':target_power_fator_1,
+               'upper_voltage_1':upper_voltage_1,
+               'capacity_1':capacity_1,
+               'bus_PT_1':bus_1PT_1,
+               'lower_voltage_1':lower_voltage_1,
+               'time_delay_1':time_delay_1,
+               'bus_CT_1':bus_1CT_1,
+               'under_voltage_1':under_voltage_1,
+               'stable_time_1':stable_time_1,
+               'mcr_PT_1':mcr_1PT_1,
+               'switch_on_threshold_1':switch_on_threshold_1,
+               'max_operating_angle_1':max_operating_angle_1,
+               'mcr_CT_1':mcr_1CT_1,
+               'unbalanced_threshold_1':unbalanced_threshold_1,
+               'upper_power_factor_1':upper_power_factor_1,
+               'time_delay_power_fator_1':time_delay_power_fator_1,
+               'over_voltage_2':over_voltage_2,
+               'over_current_2':over_current_2,
+               'target_power_fator_2':target_power_fator_2,
+               'upper_voltage_2':upper_voltage_2,
+               'capacity_2':capacity_2,
+               'bus_PT_2':bus_1PT_2,
+               'lower_voltage_2':lower_voltage_2,
+               'time_delay_2':time_delay_2,
+               'bus_CT_2':bus_1CT_2,
+               'under_voltage_2':under_voltage_2,
+               'stable_time_2':stable_time_2,
+               'mcr_PT_2':mcr_1PT_2,
+               'switch_on_threshold_2':switch_on_threshold_2,
+               'max_operating_angle_2':max_operating_angle_2,
+               'mcr_CT_2':mcr_1CT_2,
+               'unbalanced_threshold_2':unbalanced_threshold_2
+
+           }
+           post(url_page4,data);
+        }
+        
+        function pulseconfig1close(queryid)
+        {
+            configflag = 0;
+            var data={
+               'type':2,
+               'dtuid':queryid
+               }
+            post(url_page4,data);
+        }
+        function pulseconfig1open(queryid)
+        {
+            configflag = 0;
+            var data={
+               'type':3,
+               'dtuid':queryid
+               }
+            post(url_page4,data);
+        }
+        function pulseconfig2close(queryid)
+        {
+            configflag = 0;
+            var data={
+               'type':4,
+               'dtuid':queryid
+               }
+            post(url_page4,data);
+        }
+        function pulseconfig2open(queryid)
+        {
+            configflag = 0;
+            var data={
+               'type':5,
+               'dtuid':queryid
+               }
+            post(url_page4,data);
+        }
+        function remoteopen(queryid)
+        {
+			configflag = 0;
+			var data={
+               'type':6,
+               'dtuid':queryid
+               }
+            post(url_page4,data);
+        }
+        function remoteclose(queryid)
+        {
+			configflag = 0;
+			var data={
+               'type':7,
+               'dtuid':queryid
+               }
+            post(url_page4,data);
+        }
+        
+        function usedefaultconfig(queryid)
+        {
+			configflag = 0;
+			var data={
+               'type':8,
+               'dtuid':queryid
+               }
+            post(url_page4,data);
+        }
+		
+        function getconfig(queryid)
+        {
+            configflag = 1;
+            var data={
+               'type':9,
+               'dtuid':queryid
+               }
+            post(url_page4,data);
+        }
+		
+        var querytimer = window.setInterval("queryconfig('$dtu_id')",5000);
+        
+        function queryconfig(queryid)
+        {
+            if(configflag==1)
+            {
+                if($dtuinfo[34]==-1)
+                {
+					var data={
+					'type':0,
+					'dtuid':queryid
+					}
+					post(url_page4,data);
+                
+					//window.clearInterval(querytimer);
+                }
+				else{
+                    configflag = 0;
+                    getdefaultConfigs();
+                }
+            }  
+        }
+        
+        getdefaultConfigs();
+
+        function getdefaultConfigs()
+        {
+            document.getElementById("over_voltage_1").value=$dtuinfo[0];
+            document.getElementById("over_current_1").value=$dtuinfo[1];
+            document.getElementById("target_power_fator_1").value=$dtuinfo[2];
+            document.getElementById("upper_voltage_1").value=$dtuinfo[3];
+            document.getElementById("capacity_1").value=$dtuinfo[4];
+            document.getElementById("bus_1PT_1").value=$dtuinfo[5];
+            document.getElementById("lower_voltage_1").value=$dtuinfo[6];
+            document.getElementById("time_delay_1").value=$dtuinfo[7];
+            
+            document.getElementById("bus_1CT_1").value=$dtuinfo[8];
+            document.getElementById("under_voltage_1").value=$dtuinfo[9];
+            document.getElementById("stable_time_1").value=$dtuinfo[10];
+            document.getElementById("mcr_1PT_1").value=$dtuinfo[11];
+            document.getElementById("switch_on_threshold_1").value=$dtuinfo[12];
+            document.getElementById("max_operating_angle_1").value=$dtuinfo[13];
+            document.getElementById("mcr_1CT_1").value=$dtuinfo[14];
+            document.getElementById("unbalanced_threshold_1").value=$dtuinfo[15];
+            
+            document.getElementById("upper_power_factor_1").value=$dtuinfo[16];
+            document.getElementById("time_delay_power_fator_1").value=$dtuinfo[17];
+            document.getElementById("over_voltage_2").value=$dtuinfo[18];
+            document.getElementById("over_current_2").value=$dtuinfo[19];
+            document.getElementById("target_power_fator_2").value=$dtuinfo[20];
+            document.getElementById("upper_voltage_2").value=$dtuinfo[21];
+            document.getElementById("capacity_2").value=$dtuinfo[22];
+            document.getElementById("bus_1PT_2").value=$dtuinfo[23];
+            
+            document.getElementById("lower_voltage_2").value=$dtuinfo[24];
+            document.getElementById("time_delay_2").value=$dtuinfo[25];
+            document.getElementById("bus_1CT_2").value=$dtuinfo[26];
+            document.getElementById("under_voltage_2").value=$dtuinfo[27];
+            document.getElementById("stable_time_2").value=$dtuinfo[28];
+            document.getElementById("mcr_1PT_2").value=$dtuinfo[29];
+            document.getElementById("switch_on_threshold_2").value=$dtuinfo[30];
+            document.getElementById("max_operating_angle_2").value=$dtuinfo[31];
+            document.getElementById("mcr_1CT_2").value=$dtuinfo[32];
+            document.getElementById("unbalanced_threshold_2").value=$dtuinfo[33];
+        }
+
+        function post(URL, PARAMS) {        
+            var temp = document.createElement("form");        
+            temp.action = URL;        
+            temp.method = "post";        
+            temp.style.display = "none";        
+            for (var x in PARAMS) {        
+                var opt = document.createElement("textarea");        
+                opt.name = x;        
+                opt.value = PARAMS[x];        
+                // alert(opt.name)        
+                temp.appendChild(opt);        
+            }        
+            document.body.appendChild(temp);        
+            temp.submit();        
+            return temp;        
+        }  
+    </script>
+
+    <div id="footer"> <small>
+      <!-- Remove this notice or replace it with whatever you want -->
+      &#172; Copyright 2017 YFW | Powered by ngnix </small> </div>
+    <!-- End #footer -->
+  </div>
+  <!-- End #main-content -->
+</div>
+</body>
+<!-- Download From www.exet.tk-->
+</html>

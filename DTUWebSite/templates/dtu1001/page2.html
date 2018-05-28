@@ -1,0 +1,224 @@
+$def with (dtuinfo,eventhistory,dtu_id)
+
+<!DOCTYPE html PUBLIC "-//W6C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w6.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset="UTF-5" />
+<title>DTU1001</title>
+<!--                       CSS                       -->
+<!-- Reset Stylesheet -->
+<link rel="stylesheet" href="../static/css/reset.css" type="text/css" media="screen" />
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="../static/css/style.css" type="text/css" media="screen" />
+<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
+<link rel="stylesheet" href="../static/css/invalid.css" type="text/css" media="screen" />
+<!--                       Javascripts                       -->
+<!-- jQuery <script type="text/javascript" src="../static/scripts/jquery2.3.2.min.js"></script> -->
+
+<!-- jQuery Configuration -->
+<script type="text/javascript" src="../static/scripts/simpla.jquery.configuration.js"></script>
+<!-- Facebox jQuery Plugin -->
+<script type="text/javascript" src="../static/scripts/facebox.js"></script>
+<!-- jQuery WYSIWYG Plugin -->
+<script type="text/javascript" src="../static/scripts/jquery.wysiwyg.js"></script>
+<!-- jQuery Datepicker Plugin -->
+<script type="text/javascript" src="../static/scripts/jquery.datePicker.js"></script>
+<script type="text/javascript" src="../static/scripts/jquery.date.js"></script>
+
+<script type="text/javascript">
+
+$dtu_id = 'dtu1001';
+//var url_server = "http://35.166.81.188:8001/";
+var url_server = "http://122.224.118.206:8000/dtu1001/";
+
+function queryPage1(queryid){
+    var url = url_server + "page1?reset1=0&reset2=0&dtuid="+queryid+"&mcr_angle_set_1=-1&mcr_angle_set_2=-1&mcr_auto_flag_set_1=-1&mcr_auto_flag_set_2=-1";
+    window.open(url,"_self");
+}
+function queryPage2(queryid){
+    var url = url_server +  "page2?dtuid="+queryid;
+    window.open(url,"_self");
+}
+function queryPage3(queryid){
+    var url = url_server + "page3?starttime=-1&endtime=-1&dtuid="+queryid;
+    window.open(url,"_self");
+}
+function queryPage4(queryid){
+    var url = url_server + "page4?dtuid="+queryid;
+    window.open(url,"_self");
+}
+
+function get_event(name, value){
+    if(name == "flag_switch_main"){
+       if(value == 0) { return "母联开"; } else{ return "母联合"; }}
+    if(name == "flag_switch_entry_1"){
+       if(value == 0) { return "I段进线开"; } else{ return "I段进线合"; }}
+    if(name == "flag_switch_entry_2"){
+       if(value == 0) { return "II段进线开"; } else{ return "II段进线合"; } }
+       
+    if(name == "flag_switch_mcr_1"){
+       if(value == 0) { return "磁控1出线开"; } else{ return "磁控1出线合"; }}
+    if(name == "flag_switch_mcr_2"){
+       if(value == 0) { return "磁控2出线开"; } else{ return "磁控2出线合"; }}
+    if(name == "flag_lock_status"){
+       if(value == 0) { return "DSP闭锁标志 0"; } else{ return "DSP闭锁标志 1"; }  }
+       
+    if(name == "flag_null_status"){
+       if(value == 0) { return "NULL标志 0"; } else{ return "NULL标志 1"; }}
+    if(name == "flag_voltage_over_1"){
+       if(value == 0) { return "I段过压 0"; } else{ return "I段过压 1"; }}
+    if(name == "flag_voltage_under_1"){
+       if(value == 0) { return "I段欠压 0"; } else{ return "I段欠压 1"; } }
+       
+    if(name == "flag_threshold_over_1"){
+       if(value == 0) { return "I段越限 0"; } else{ return "I段越限 1"; }}
+    if(name == "flag_current_over_1"){
+       if(value == 0) { return "I段过流 0"; } else{ return "I段过流 1"; }}
+    if(name == "flag_current_unblance_1"){
+       if(value == 0) { return "I段不平衡 0"; } else{ return "I段不平衡 1"; } }         
+    
+    if(name == "flag_sampling_error_1"){
+       if(value == 0) { return "I段采样故障 0"; } else{ return "I段采样故障 1"; } }
+    if(name == "flag_sampling_warning_1"){
+       if(value == 0) { return "I段采样报警 0"; } else{ return "I段采样报警 1"; } }
+    if(name == "flag_switch_gas_1"){
+       if(value == 0) { return "III段进线开关闭合 0"; } else{ return "III段进线开关闭合 1"; }  }
+       
+    if(name == "flag_prediction_1"){
+       if(value == 0) { return "磁控1报警 0"; } else{ return "磁控1报警 1"; }}
+    if(name == "flag_high_temperature_1"){
+       if(value == 0) { return "磁控1故障 0"; } else{ return "磁控1故障 1"; }}
+    if(name == "flag_voltage_over_2"){
+       if(value == 0) { return "II段过压 0"; } else{ return "II段过压 1"; }  }
+    
+    if(name == "flag_voltage_under_2"){
+       if(value == 0) { return "II段欠压 0"; } else{ return "II段欠压 1"; }}
+    if(name == "flag_threshold_over_2"){
+       if(value == 0) { return "II段越限 0"; } else{ return "II段越限 1"; }}
+    if(name == "flag_current_over_2"){
+       if(value == 0) { return "II段过流 0"; } else{ return "II段过流 1"; } }
+       
+    if(name == "flag_current_unblance_2"){
+       if(value == 0) { return "II段电流不平衡 0"; } else{ return "II段电流不平衡 1"; }}
+    if(name == "flag_sampling_error_2"){
+       if(value == 0) { return "II段采样故障 0"; } else{ return "II段采样故障 1"; }}
+    if(name == "flag_sampling_warning_2"){
+       if(value == 0) { return "II段采样报警 0"; } else{ return "II段采样报警 1"; } }
+    
+    if(name == "flag_switch_gas_2"){
+       if(value == 0) { return "2#母联开关 0"; } else{ return "2#母联开关 1"; }}
+    if(name == "flag_prediction_2"){
+       if(value == 0) { return "磁控2报警 0"; } else{ return "磁控2报警 1"; }}
+    if(name == "flag_high_temperature_2"){
+       if(value == 0) { return "磁控2故障  0"; } else{ return "磁控2故障  1"; } }
+       
+    if(name == "flag_magnetic_reset"){
+       if(value == 0) { return "磁控复位标志 0"; } else{ return "磁控复位标志 1"; }}
+    if(name == "flag_power_factor_1"){
+       if(value == 0) { return "I段过功率因数 0"; } else{ return "I段过功率因数 1"; }}
+    if(name == "flag_power_factor_2"){
+       if(value == 0) { return "Ⅱ段过功率因数 0"; } else{ return "Ⅱ段过功率因数 1"; } }
+    
+    if(name == "flag_entry_error_1"){
+       if(value == 0) { return "I段进线开关错误 0"; } else{ return "I段进线开关错误 1"; }}
+    if(name == "flag_entry_error_2"){
+       if(value == 0) { return "II段进线开关错误 0"; } else{ return "II段进线开关错误 1"; } }
+}
+
+</script>
+
+<style type="text/css">
+<!-- Overwrite -->
+#main-content tbody { 
+	border-bottom: none;
+}
+</style>
+
+</head>
+
+<body>
+<div id="body-wrapper">
+  <!-- Wrapper for the radial gradient background -->
+  <div id="sidebar">
+    <div id="sidebar-wrapper">
+      <!-- Sidebar with logo and menu -->
+      <!-- Sidebar Profile links -->
+      <ul id="main-nav" style="position:relative;top:100px;">
+        <!-- Accordion Menu -->
+        <li> 
+          <ul>
+            <li><a onclick="javascript:queryPage1('$dtu_id');">状态显示</a></li>
+            <li><a onclick="javascript:queryPage2('$dtu_id');">历史事件</a></li>
+            <li><a onclick="javascript:queryPage3('$dtu_id');">历史曲线</a></li>
+            <li><a onclick="javascript:queryPage4('$dtu_id');">参数设置</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- End #main-nav -->
+    </div>
+  </div>
+  
+  <!-- End #sidebar -->
+  <div id="main-content">
+    <!-- Main Content Section with everything -->
+	<p align="center" style="font-size:200%;">DTU1001</p>
+
+    <table>
+	    <tr>
+            <td width="45%">
+                <div style="height:500px;overflow:scroll;">
+                    <table frame="none">
+                        <tr>
+                             <th align="center">时间</th><th align="center">当前事件</th>
+                        </tr>
+
+					    $for item in dtuinfo:
+					    <tr>
+						     <td>$item['time']</td><td><script type="text/javascript">document.write(get_event("$item['var_name']",$item['var_value']))</script></td>
+					    </tr>
+	                </table>
+                 </div>
+            </td>
+		    <td width="45%">
+			    <div style="height:500px;overflow:scroll;">
+				    <table frame="none">
+					    <tr>
+						    <th align="center">时间</th><th align="center">历史事件</th>
+					    </tr>
+
+					    $for item in eventhistory:
+					    <tr>
+						     <td>$item['time']</td><td><script type="text/javascript">document.write(get_event("$item['var_name']",$item['var_value']))</script></td>
+					    </tr>
+                    </table> 
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- End .content-box -->
+    <div class="clear" style="clear:both;"></div>
+	
+    <script>
+        var querytimer = window.setInterval("queryconfig('$dtu_id')",15000);
+
+        function queryconfig(queryid)
+        {
+            var url = url_server + "page2?dtuid="+queryid;
+            window.open(url,"_self"); 
+        }
+    </script>
+	
+    <div id="footer"> 
+	    <small>
+      <!-- Remove this notice or replace it with whatever you want -->
+      &#172; Copyright 2017 YFW | Powered by ngnix 
+	    </small> 
+	</div>
+    <!-- End #footer -->
+  </div>
+  <!-- End #main-content -->
+</div>
+</body>
+<!-- Download From www.exet.tk-->
+</html>

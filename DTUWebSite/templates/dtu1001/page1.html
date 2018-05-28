@@ -1,0 +1,803 @@
+$def with (dtuinfo,dtu_id)
+
+<!-- <!DOCTYPE html PUBLIC "-//W6C//DTD XHTML 1.0 Strict//EN"-->
+<!DOCTYPE HTML>
+<!-- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
+<!-- <html xmlns="http://www.w6.org/1999/xhtml">-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset="UTF-5" />
+<title>DTU1001</title>
+<!--                       CSS                       -->
+<!-- Reset Stylesheet -->
+<link rel="stylesheet" href="../static/css/reset.css" type="text/css" media="screen" />
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="../static/css/style.css" type="text/css" media="screen" />
+<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
+<link rel="stylesheet" href="../static/css/invalid.css" type="text/css" media="screen" />
+<!--                       Javascripts                       -->
+<!-- jQuery <script type="text/javascript" src="../static/scripts/jquery2.3.2.min.js"></script> -->
+
+<!-- jQuery Configuration -->
+<script type="text/javascript" src="../static/scripts/simpla.jquery.configuration.js"></script>
+<!-- Facebox jQuery Plugin -->
+<script type="text/javascript" src="../static/scripts/facebox.js"></script>
+<!-- jQuery WYSIWYG Plugin -->
+<script type="text/javascript" src="../static/scripts/jquery.wysiwyg.js"></script>
+<!-- jQuery Datepicker Plugin -->
+<script type="text/javascript" src="../static/scripts/jquery.datePicker.js"></script>
+<script type="text/javascript" src="../static/scripts/jquery.date.js"></script>
+
+
+<script type="text/javascript">
+
+$dtu_id = 'dtu1001';
+
+var ws = null;//new WebSocket("ws://122.224.118.206:8023/echo");
+var received_msg = null;
+
+//var url_server = "http://35.166.81.188:8001/";
+var url_server = "http://122.224.118.206:8000/dtu1001/";
+
+function queryPage1(queryid){
+    var url = url_server + "page1?reset1=0&reset2=0&dtuid="+queryid+"&mcr_angle_set_1=-1&mcr_angle_set_2=-1&mcr_auto_flag_set_1=-1&mcr_auto_flag_set_2=-1";
+    window.open(url,"_self");
+}
+
+//------------------------------yang fu wen start ---------------------
+function WebSocketTest()
+{
+	//ws.send("websocket已运行");
+    //alert("您的浏览器支持 WebSocket!");	
+    if ("WebSocket" in window)//浏览器是否支持websocket
+	{
+	   //alert("您的浏览器支持 WebSocket!");	   
+	   // 打开一个 web socket
+		ws = new WebSocket("ws://122.224.118.206:8023/echo");
+		setInterval('mysenddata()', 2400);//设置定时器
+	   	//ws.send("websocket已运行");
+		ws.onopen = function()
+		{
+			//Web Socket 已连接上，使用 send() 方法发送数据
+			ws.send("dtu1001");
+			//alert("数据发送中..."); 
+		};
+		
+		ws.onmessage = function (evt) 
+		{ 
+			received_msg = evt.data;
+            msg_array = received_msg.split(" ");		
+			var temp_element1 = document.getElementById("element1");
+			temp_element1.innerHTML = msg_array[12];
+            temp_element1 = document.getElementById("element2");
+			temp_element1.innerHTML = msg_array[13];
+            temp_element1 = document.getElementById("element3");
+			temp_element1.innerHTML = msg_array[14];
+            temp_element1 = document.getElementById("element4");
+			temp_element1.innerHTML = msg_array[15];
+            temp_element1 = document.getElementById("element5");
+			temp_element1.innerHTML = msg_array[16];
+            temp_element1 = document.getElementById("element11");
+			temp_element1.innerHTML = msg_array[17];
+            temp_element1 = document.getElementById("element12");
+			temp_element1.innerHTML = msg_array[18];
+            temp_element1 = document.getElementById("element13");
+			temp_element1.innerHTML = msg_array[19];
+            temp_element1 = document.getElementById("element14");
+			temp_element1.innerHTML = msg_array[20];
+            temp_element1 = document.getElementById("element15");
+			temp_element1.innerHTML = msg_array[21];
+            temp_element1 = document.getElementById("element6");
+			temp_element1.innerHTML = msg_array[22];
+            temp_element1 = document.getElementById("element7");
+			temp_element1.innerHTML = msg_array[23];
+            temp_element1 = document.getElementById("element8");
+			temp_element1.innerHTML = msg_array[24];
+            temp_element1 = document.getElementById("element9");
+			temp_element1.innerHTML = msg_array[25];
+            temp_element1 = document.getElementById("element10");
+			temp_element1.innerHTML = msg_array[26];
+            temp_element1 = document.getElementById("element16");
+			temp_element1.innerHTML = msg_array[27];
+            temp_element1 = document.getElementById("element17");
+			temp_element1.innerHTML = msg_array[28];
+            temp_element1 = document.getElementById("element18");
+			temp_element1.innerHTML = msg_array[29];
+            temp_element1 = document.getElementById("element19");
+			temp_element1.innerHTML = msg_array[30];
+            temp_element1 = document.getElementById("element20");
+			temp_element1.innerHTML = msg_array[31];
+            temp_element1 = document.getElementById("element21");
+			temp_element1.innerHTML = msg_array[32];
+            temp_element1 = document.getElementById("element22");
+			temp_element1.innerHTML = msg_array[33];
+            temp_element1 = document.getElementById("element23");
+			temp_element1.innerHTML = msg_array[34];
+            temp_element1 = document.getElementById("element24");
+			temp_element1.innerHTML = msg_array[35];
+            temp_element1 = document.getElementById("element25");
+			temp_element1.innerHTML = msg_array[36];
+		};
+
+		ws.onclose = function()
+		{ 
+		  // 关闭 websocket
+		  //alert("连接已关闭..."); 
+		};
+	}
+	else
+	{
+		// 浏览器不支持 WebSocket
+		alert("您的浏览器不支持实时通信,无法实时监控设备,请升级浏览器!");
+	}
+}
+
+
+function mysenddata()//定时器中启动发送
+{
+	ws.send("dtu1001");
+}
+	 
+//------------------------------yang fu wen end ---------------------    
+function queryPage2(queryid){
+    var url = url_server +  "page2?dtuid="+queryid;
+    window.open(url,"_self");
+}
+function queryPage3(queryid){
+    var url = url_server + "page3?starttime=-1&endtime=-1&dtuid="+queryid;
+    window.open(url,"_self");
+}
+function queryPage4(queryid){
+    var url = url_server + "page4?dtuid="+queryid;
+    window.open(url,"_self");
+}
+
+function getSwitchImg(item, id)
+{
+    x="";
+    if (item=='0')
+        x="../static/imgs/2.png";
+    else
+        x="../static/imgs/1.png";
+    document.getElementById(id).src=x;
+}
+
+function getSwitchImg2(item, id)
+{
+    x="";
+    if (item=='0')
+    {
+        x="../static/imgs/3.png";
+    }else
+    {
+        x="../static/imgs/33.png";
+    }
+        
+    document.getElementById(id).src=x;
+}
+
+function getSwitchImg3(item, id)
+{
+    x="";
+    if (item=='0')
+        x="../static/imgs/open.png";
+    else
+        x="../static/imgs/close.png";
+    document.getElementById(id).src=x;
+}
+
+function getSwitchImg4(item, id)
+{
+    x="";
+    if (item=='0')
+        x="../static/imgs/open11.png";
+    else
+        x="../static/imgs/close1.png";
+    document.getElementById(id).src=x;
+}
+</script>
+
+<style type="text/css">
+#main_left {
+	width: 900px;
+	height: 800px;
+	background-image: url(../static/imgs/main1.png);
+	background-size: 100% 100%;
+	background-repeat: none;
+	position: relative;
+	float: left;
+}
+#productname {
+    position: absolute;
+    left: 130px;
+    top: 45px;
+}
+#productmodel{
+    position: absolute;
+    left: 130px;
+    top: 75px;
+}
+#systemtime{
+    position: absolute;
+    left: 650px;
+    top: 45px;
+}
+#productcode{
+    position: absolute;
+    left: 650px;
+    top: 75px;
+}
+
+#open1 {
+    position: absolute;
+    left: 69px;
+    top: 273px;
+}
+#open2 {
+    position: absolute;
+    left: 423px;
+    top: 273px;
+}
+#open3 {
+    position: absolute;
+    left: 783px;
+    top: 273px;
+}
+#open4 {
+    position: absolute;
+    left: 218px;
+    top: 342px;
+}
+#open5 {
+    position: absolute;
+    left: 538px;
+    top: 342px;
+}
+
+#open6 {
+    position: absolute;
+    left: 70px;
+    top: 390px;
+}
+#open7 {
+    position: absolute;
+    left: 782px;
+    top: 390px;
+}
+
+
+#element1 {
+    position: absolute;
+	font-weight:bold;
+    left: 330px;
+    top: 200px;
+}
+#element2 {
+    position: absolute;
+	font-weight:bold;
+    left: 330px;
+    top: 228px;
+}
+#element3 {
+    position: absolute;
+	font-weight:bold;
+    left: 330px;
+    top: 256px;
+}
+#element4 {
+    position: absolute;
+	font-weight:bold;
+    left: 330px;
+    top: 284px;
+}
+#element5 {
+    position: absolute;
+	font-weight:bold;
+    left: 330px;
+    top: 312px;
+}
+#element6 {
+    position: absolute;
+	font-weight:bold;
+    left: 540px;
+    top: 200px;
+}
+#element7 {
+    position: absolute;
+	font-weight:bold;
+    left: 540px;
+    top: 228px;
+}
+#element8 {
+    position: absolute;
+	font-weight:bold;
+    left: 540px;
+    top: 256px;
+}
+#element9 {
+    position: absolute;
+	font-weight:bold;
+    left: 540px;
+    top: 284px;
+}
+#element10 {
+    position: absolute;
+	font-weight:bold;
+    left: 540px;
+    top: 312px;
+}
+#element11 {
+    position: absolute;
+	font-weight:bold;
+    left: 700px;
+    top: 200px;
+}
+#element12 {
+    position: absolute;
+	font-weight:bold;
+    left: 700px;
+    top: 228px;
+}
+#element13 {
+    position: absolute;
+	font-weight:bold;
+    left: 700px;
+    top: 256px;
+}
+#element14 {
+    position: absolute;
+	font-weight:bold;
+    left: 700px;
+    top: 284px;
+}
+#element15 {
+    position: absolute;
+	font-weight:bold;
+    left: 700px;
+    top: 312px;
+}
+#element16 {
+    position: absolute;
+	font-weight:bold;
+    left: 410px;
+    top: 382px;
+}
+#element17 {
+    position: absolute;
+	font-weight:bold;
+    left: 410px;
+    top: 410px;
+}
+#element18 {
+    position: absolute;
+	font-weight:bold;
+    left: 410px;
+    top: 438px;
+}
+#element19 {
+    position: absolute;
+	font-weight:bold;
+    left: 410px;
+    top: 466px;
+}
+#element20 {
+    position: absolute;
+	font-weight:bold;
+    left: 410px;
+    top: 494px;
+}
+#element21 {
+    position: absolute;
+	font-weight:bold;
+    left: 570px;
+    top: 382px;
+}
+#element22 {
+    position: absolute;
+	font-weight:bold;
+    left: 570px;
+    top: 410px;
+}
+#element23 {
+    position: absolute;
+	font-weight:bold;
+    left: 570px;
+    top: 438px;
+}
+#element24 {
+    position: absolute;
+	font-weight:bold;
+    left: 570px;
+    top: 466px;
+}
+#element25 {
+    position: absolute;
+	font-weight:bold;
+    left: 570px;
+    top: 494px;
+}
+#flag_voltage_1{
+    position: absolute;
+	font-weight:bold;
+    left: 30px;
+    top: 135px;
+}
+#flag_current_1{
+    position: absolute;
+	font-weight:bold;
+    left: 100px;
+    top: 135px;
+}
+#flag_sampling_1{
+    position: absolute;
+	font-weight:bold;
+    left: 175px;
+    top: 135px;
+}
+#flag_prediction_1{
+    position: absolute;
+	font-weight:bold;
+    left: 250px;
+    top: 135px;
+}
+#flag_high_temperature_1{
+    position: absolute;
+	font-weight:bold;
+    left: 330px;
+    top: 135px;
+}
+#flag_manul_auto_1{
+    position: absolute;
+	font-weight:bold;
+    left: 390px;
+    top: 135px;
+}
+#flag_manul_auto_2{
+    position: absolute;
+	font-weight:bold;
+    left: 465px;
+    top: 135px;
+}
+#flag_voltage_2{
+    position: absolute;
+	font-weight:bold;
+    left: 540px;
+    top: 135px;
+}
+#flag_current_2{
+    position: absolute;
+	font-weight:bold;
+    left: 600px;
+    top: 135px;
+}
+#flag_sampling_2{
+    position: absolute;
+	font-weight:bold;
+    left: 680px;
+    top: 135px;
+}
+#flag_prediction_2{
+    position: absolute;
+	font-weight:bold;
+    left: 755px;
+    top: 135px;
+}
+#flag_high_temperature_2{
+    position: absolute;
+	font-weight:bold;
+    left: 830px;
+    top: 135px;
+}
+#reset1{
+    position: absolute;
+	font-weight:bold;
+    left: 230px;
+    top: 635px;
+}
+#reset2{
+    position: absolute;
+	font-weight:bold;
+    left: 630px;
+    top: 635px;
+}
+
+#mcr_angle_set_1{
+    position: absolute;
+	font-weight:bold;
+    left: 180px;
+    top: 700px;
+}
+#mcr_angle_set_2{
+    position: absolute;
+	font-weight:bold;
+    left: 580px;
+    top: 700px;
+}
+#mcr_auto_flag_set_1{
+    position: absolute;
+	font-weight:bold;
+    left: 230px;
+    top: 735px;
+}
+#mcr_auto_flag_set_2{
+    position: absolute;
+	font-weight:bold;
+    left: 630px;
+    top: 735px;
+}
+#confirmed{
+    position: absolute;
+        font-weight:bold;
+    left: 450px;
+    top: 760px;
+
+}
+#controlname1{
+    position: absolute;
+        font-weight:bold;
+    left: 100px;
+    top: 700px;
+}
+#controlname2{
+    position: absolute;
+        font-weight:bold;
+    left: 500px;
+    top: 700px;
+}
+#divid 
+{
+    float: right;
+}
+a
+{
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body onload = "WebSocketTest()">
+
+<div id="body-wrapper">
+  <!-- Wrapper for the radial gradient background -->
+  <div id="divid">
+        <a id="pid1" href="login.html">登录</a>
+        <a id="pid2"onclick="Quit()"href="#"style="display:none">退出</a>
+	</div>
+  <div id="sidebar">
+    <div id="sidebar-wrapper">
+      <!-- Sidebar with logo and menu -->
+      <!-- Sidebar Profile links -->
+      <ul id="main-nav" style="position:relative;top:100px;">
+        <!-- Accordion Menu -->
+        <li> 
+          <ul>
+            <li><a onclick="javascript:queryPage1('$dtu_id');">状态显示</a></li>
+            <li><a onclick="javascript:queryPage2('$dtu_id');">历史事件</a></li>
+            <li><a onclick="javascript:queryPage3('$dtu_id');">历史曲线</a></li>
+            <li><a onclick="javascript:queryPage4('$dtu_id');">参数设置</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- End #main-nav -->
+    </div>
+  </div>
+
+  <!-- End #sidebar -->
+  <div id="main-content">
+    <!-- Main Content Section with everything -->
+	<p align="center" style="font-size:200%;">DTU1001</p>
+	
+    <div id="main_left">
+		<img id="flag_voltage_1" onload="getSwitchImg($dtuinfo[0], 'flag_voltage_1');" src="../static/imgs/2.png"></img>
+		<img id="flag_current_1" onload="getSwitchImg($dtuinfo[1], 'flag_current_1');" src="../static/imgs/2.png"></img>
+		<img id="flag_sampling_1" onload="getSwitchImg($dtuinfo[2], 'flag_sampling_1');" src="../static/imgs/2.png"></img>
+		<img id="flag_prediction_1" onload="getSwitchImg($dtuinfo[3], 'flag_prediction_1');" src="../static/imgs/2.png"></img>
+		<img id="flag_high_temperature_1" onload="getSwitchImg($dtuinfo[4], 'flag_high_temperature_1');" src="../static/imgs/2.png"></img>
+		<img id="flag_manul_auto_1" onload="getSwitchImg2($dtuinfo[5], 'flag_manul_auto_1');" src="../static/imgs/3.png"></img>
+		<img id="flag_manul_auto_2" onload="getSwitchImg2($dtuinfo[6], 'flag_manul_auto_2');" src="../static/imgs/3.png"></img>
+		<img id="flag_voltage_2" onload="getSwitchImg($dtuinfo[7], 'flag_voltage_2');" src="../static/imgs/2.png"></img>
+		<img id="flag_current_2" onload="getSwitchImg($dtuinfo[8], 'flag_current_2');" src="../static/imgs/2.png"></img>
+		<img id="flag_sampling_2" onload="getSwitchImg($dtuinfo[9], 'flag_sampling_2');" src="../static/imgs/2.png"></img>
+		<img id="flag_prediction_2" onload="getSwitchImg($dtuinfo[10], 'flag_prediction_2');" src="../static/imgs/2.png"></img>
+		<img id="flag_high_temperature_2" onload="getSwitchImg($dtuinfo[11], 'flag_high_temperature_2');" src="../static/imgs/2.png"></img>
+		
+		<img id="open1" onload="getSwitchImg3($dtuinfo[37], 'open1');" src="../static/imgs/open.png"></img>
+		<img id="open2" onload="getSwitchImg3($dtuinfo[38], 'open2');" src="../static/imgs/open.png"></img>
+		<img id="open3" onload="getSwitchImg3($dtuinfo[39], 'open3');" src="../static/imgs/open.png"></img>
+		
+		<img id="open4" onload="getSwitchImg4($dtuinfo[42], 'open4');" src="../static/imgs/open11.png"></img>
+		<img id="open5" onload="getSwitchImg4($dtuinfo[43], 'open5');" src="../static/imgs/open11.png"></img>
+		<img id="open6" onload="getSwitchImg3($dtuinfo[40], 'open6');" src="../static/imgs/open.png"></img>
+		<img id="open7" onload="getSwitchImg3($dtuinfo[41], 'open7');" src="../static/imgs/open.png"></img>
+		
+		<p id="element1">$dtuinfo[12]</p>
+		<p id="element2">$dtuinfo[13]</p>
+		<p id="element3">$dtuinfo[14]</p>
+		<p id="element4">$dtuinfo[15]</p>
+		<p id="element5">$dtuinfo[16]</p>
+		
+		<p id="element6">$dtuinfo[22]</p>
+		<p id="element7">$dtuinfo[23]</p>
+		<p id="element8">$dtuinfo[24]</p>
+		<p id="element9">$dtuinfo[25]</p>
+		<p id="element10">$dtuinfo[26]</p>
+		
+		<p id="element11">$dtuinfo[17]</p>
+		<p id="element12">$dtuinfo[18]</p>
+		<p id="element13">$dtuinfo[19]</p>
+		<p id="element14">$dtuinfo[20]</p>
+		<p id="element15">$dtuinfo[21]</p>
+
+		<p id="element16">$dtuinfo[27]</p>
+		<p id="element17">$dtuinfo[28]</p>
+		<p id="element18">$dtuinfo[29]</p>
+		<p id="element19">$dtuinfo[30]</p>
+		<p id="element20">$dtuinfo[31]</p>
+		<p id="element21">$dtuinfo[32]</p>
+		<p id="element22">$dtuinfo[33]</p>
+		<p id="element23">$dtuinfo[34]</p>
+		<p id="element24">$dtuinfo[35]</p>
+		<p id="element25">$dtuinfo[36]</p>
+		
+		<button id="reset1" class="button" onClick="reset1('$dtu_id');">MCR1复位</button>
+		<button id="reset2" class="button" onClick="reset2('$dtu_id');">MCR2复位</button>
+		
+		<p id="productname">$dtuinfo[44]</p>
+		<p id="productmodel">$dtuinfo[45]</p>     
+		<p id="productcode">$dtuinfo[46]</p>
+		<p id="systemtime">$dtuinfo[47]</p>
+		
+		<p id="controlname1" style="display: none">MCR1 控制角</p><input id="mcr_angle_set_1" style="display: none"></input>
+		<p id="controlname2" style="display: none">MCR2 控制角</p><input id="mcr_angle_set_2" style="display: none"></input>
+		<select id="mcr_auto_flag_set_1" style="display: none">
+			<option value =1>手动</option>
+			<option value =0>自动</option>
+		</select>
+		<select id="mcr_auto_flag_set_2" style="display: none">
+			<option value =1>手动</option>
+			<option value =0>自动</option>
+		</select>
+		<button id="confirmed" class="button" style="display: none" onClick="confirmed('$dtu_id');">确认配置</button>
+    </div>
+   
+    <!-- End .content-box -->
+    <div class="clear"></div>
+	
+	<script>
+        function reset1(dtu_id)
+        {
+            var url = url_server + "page1?reset1=1&reset2=0&dtuid="+dtu_id+"&mcr_angle_set_1=-1&mcr_angle_set_2=-1&mcr_auto_flag_set_1=-1&mcr_auto_flag_set_2=-1";
+            window.open(url,"_self");
+        }
+		
+        function reset2(dtu_id)
+        {
+            var url = url_server + "page1?reset1=0&reset2=1&dtuid="+dtu_id+"&mcr_angle_set_1=-1&mcr_angle_set_2=-1&mcr_auto_flag_set_1=-1&mcr_auto_flag_set_2=-1";
+            window.open(url,"_self");
+        }
+        
+        function confirmed(dtu_id)
+        {
+            var mcr_angle_set_1=document.getElementById("mcr_angle_set_1").value;
+            var mcr_angle_set_2=document.getElementById("mcr_angle_set_2").value;
+            var mcr_auto_flag_set_1=document.getElementById("mcr_auto_flag_set_1").value;
+            var mcr_auto_flag_set_2=document.getElementById("mcr_auto_flag_set_2").value;
+            var url = url_server + "page1?reset1=0&reset2=0&dtuid="+dtu_id+"&mcr_angle_set_1="+mcr_angle_set_1+"&mcr_angle_set_2="+mcr_angle_set_2+"&mcr_auto_flag_set_1="+mcr_auto_flag_set_1+"&mcr_auto_flag_set_2="+mcr_auto_flag_set_2;
+            window.open(url,"_self");
+        }
+    </script>
+	
+    <div id="footer"> <small>
+      <!-- Remove this notice or replace it with whatever you want -->
+      &#172; Copyright 2017 YFW | Powered by ngnix </small> </div>
+    <!-- End #footer -->
+  </div>
+  <!-- End #main-content -->
+</div>
+</body>
+<script language="JavaScript">
+var mcr_angle_set_1="";
+var mcr_angle_set_2="";
+var mcr_auto_flag_set_1="";
+var mcr_auto_flag_set_2="";
+function myrefresh()
+{
+    mcr_angle_set_1=document.getElementById("mcr_angle_set_1").value;
+            mcr_angle_set_2=document.getElementById("mcr_angle_set_2").value;
+            mcr_auto_flag_set_1=document.getElementById("mcr_auto_flag_set_1").value;
+            mcr_auto_flag_set_2=document.getElementById("mcr_auto_flag_set_2").value;
+    
+   setCookie("mcr_angle_set_1",mcr_angle_set_1);
+   setCookie("mcr_angle_set_2",mcr_angle_set_2);
+   setCookie("mcr_auto_flag_set_1",mcr_auto_flag_set_1);
+   setCookie("mcr_auto_flag_set_2",mcr_auto_flag_set_2); 
+   window.location.reload();
+   //setTimeout('reloadConfigs()',1000);
+}
+function reloadConfigs()
+{
+   if(document.cookie.indexOf("mcr_angle_set_1")!=-1)
+   {
+   document.getElementById("mcr_angle_set_1").value=getCookie("mcr_angle_set_1");
+   }
+   if(document.cookie.indexOf("mcr_angle_set_2")>0)
+   {
+   document.getElementById("mcr_angle_set_2").value=getCookie("mcr_angle_set_2");
+   }
+   if(document.cookie.indexOf("mcr_auto_flag_set_1")>0)
+   {
+   document.getElementById("mcr_auto_flag_set_1").value=getCookie("mcr_auto_flag_set_1");
+   }
+   if(document.cookie.indexOf("mcr_auto_flag_set_2")>0)
+   {
+   document.getElementById("mcr_auto_flag_set_2").value=getCookie("mcr_auto_flag_set_2"); 
+   }
+ delCookie("mcr_angle_set_1");
+ delCookie("mcr_angle_set_2");
+ delCookie("mcr_auto_flag_set_1");
+ delCookie("mcr_auto_flag_set_2"); 
+}
+function setCookie(name,value) 
+{ 
+    var Days = 30; 
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() + Days*24*60*60*1000); 
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
+} 
+function delCookie(name) 
+{ 
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() - 1); 
+    var cval=getCookie(name); 
+    if(cval!=null) 
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
+} 
+function getCookie(cookie_name)
+
+{
+
+var allcookies = document.cookie;
+
+var cookie_pos = allcookies.indexOf(cookie_name);   //索引的长度
+
+ 
+
+// 如果找到了索引，就代表cookie存在，
+
+// 反之，就说明不存在。
+
+if (cookie_pos != -1)
+
+{
+
+// 把cookie_pos放在值的开始，只要给值加1即可。
+
+cookie_pos += cookie_name.length + 1;      //这里我自己试过，容易出问题，所以请大家参考的时候自己好好研究一下。。。
+
+var cookie_end = allcookies.indexOf(";", cookie_pos);
+
+ 
+
+if (cookie_end == -1)
+
+{
+
+cookie_end = allcookies.length;
+
+}
+
+ 
+
+var value = unescape(allcookies.substring(cookie_pos, cookie_end)); //这里就可以得到你想要的cookie的值了。。。
+
+}
+
+ 
+
+return value;
+
+}
+<!--setTimeout('myrefresh()',8000); -->
+<!--setTimeout('reloadConfigs()',500);-->
+</script>
+<!-- Download From www.exet.tk-->
+</html>

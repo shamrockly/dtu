@@ -1,0 +1,101 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>首页</title>
+<link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="./js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="./css/style.css" rel='stylesheet' type='text/css' />
+<link href='./css/fonts.css' rel='stylesheet' type='text/css'>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+	<!--- Header Starts Here --->
+	<div class="header">
+		<div class="container">
+			<div class="logo">
+				<a href="index.html"><img src="./images/logo.png" alt=""/></a>
+			</div>
+			<div class="navigation">
+				<span class="menu"><img src="./images/nav.png" alt="" /></span>
+				<ul class="nav">
+					<li><a href="index.html">首页</a></li> <lable>/</lable>
+					<li><a href="apidoc.html">开发文档</a></li> <lable>/</lable>
+					<li><a href="errorcode.html">错误代码</a></li> <lable>/</lable>
+					<li><a href="apidownload.html">API示例代码下载</a></li> <lable>/</lable>
+					<li><a href="webdoc.html">网站后台使用文档</a></li> <lable>/</lable>
+					<li><a href="http://www.kqdama.com:8080/login" target="_blank">后台登陆</a></li>
+					<li><a href="price.html">价格表</a></li>
+				</ul>
+			</div>
+			<script>
+					$( "span.menu" ).click(function() {
+					  $( ".navigation ul.nav" ).slideToggle( "slow", function() {
+					    // Animation complete.
+					  });
+					});
+				</script>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- Content starts Here --->
+	
+
+	<div class="content">
+		<div class="container">
+		<span class="line"></span><a href="#" class="line-anchor">平台介绍</a><span class="line"></span>
+				<div class="clearfix"></div>
+			<div class="content-middle">
+				
+
+<ol>
+<br>
+<div style="font-size:20px">请务必阅读API接入流程</div>
+<br>
+</ol>
+		
+		
+		
+		
+			<span class="line"></span><a href="#" class="line-anchor">API接入流程（必看！）</a><span class="line"></span>
+				<div class="clearfix"></div>
+			<div class="content-middle">
+				
+
+<ol>
+<li>作者打开<a href="http://www.kqdama.com:8080/reg" target="_blank">http://www.kqdama.com:8080/reg</a>注册账户，之后打开<a href="http://www.kqdama.com:8080/login" target="_blank">http://www.kqdama.com:8080/login</a>登陆管理平台</li>
+<li>作者打开“常用功能-&gt;账户充值”进行充值。 <br>
+<strong><em>说明</em></strong><em>：首先选择相应充值金额和点击“去支付宝充值”，充值成功后复制本次充值的<strong>交易号或流水号（不是订单号）</strong>，在页面下方提交即可，在交易明细中可以查看本次充值是否成功。</em></li>
+<li>充值成功后打开“常用功能-&gt;账户信息”查看自己的调用次数和令牌。</li>
+<li>作者新建一个子账户，并在“子账户操作-&gt;查看子账户-&gt;修改”中，分配给子账户一定的调用次数。</li>
+<li>调用 <br>
+<code>long captcha(char* imagefile, char* userna, char* passwd，char* token, char* result)</code> <br>
+或 <br>
+<code>long captcha_stream(unsigned char* image,long length, char* userna, char* passwd, char* token, char* result)</code>函数进行打码识别，识别正确时使用<code>long captchaSuc(char* userna, char* passwd，char* token)</code>进行汇报。接入成功。 <br>
+<em>说明：此为dll函数原型，具体使用请参考各个编程语言示例。</em></li>
+</ol>
+<span class="line"></span><a href="#" class="line-anchor">注意事项</a><span class="line"></span>
+				<div class="clearfix"></div>
+
+<p>1.本平台账户类型分为<strong>“作者账户”和"子账户"</strong>，“作者账户”在<a href="http://www.kqdama.com:8080/reg" target="_blank">http://www.kqdama.com:8080/reg</a>页面注册，“子账户”必须由“作者账户”来创建。 <br>
+2.作者创建子账户后，可以对自己的子账户进行管理，比如新加、删除、修改。作者可以将自己的剩余调用次数分配给子账户，比如给某一个子账户分配1000次，那么作者账户同时减少1000次，前提是作者的剩余调用次数必须大于等于1000次，否则将报错。 <br>
+3.作者账户有一个专属的<strong>令牌</strong>，格式为一串没有空格的字符串，可以在网站<strong>“管理后台-&gt;常用功能-&gt;账户信息”</strong>中查看，在进行打码识别时需要把此令牌作为参数传递。在“账户信息”页面中，有可以更新令牌的按钮，点击后，可以更新自己的令牌。 <br>
+3.<strong>“作者账户”不能进行打码识别，只有子用户才可以进行打码识别。</strong>如果作者需要进行打码识别，请自己建立子账户。 <br>
+4.在进行识别时，该函数long captcha(char* imagefile, char* userna, char* passwd，char* token, char* result)传递的参数依次为“图片路径，<strong>子用户用户名，子用户密码，作者用户令牌</strong>,保存的返回值”，格式都是字符串。 <br>
+5.作者自己判断识别成功与否，<strong>识别成功时，务必要调用long captchaSuc(char* userna, char* passwd，char* token)进行汇报，对不汇报的用户系统将进行封号处理！</strong>该函数的三个参数仍然依次为<strong>子用户用户名，子用户密码，作者用户令牌</strong>。</p>
+
+			</div>
+			
+	
+</body>
+</html>

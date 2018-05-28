@@ -1,0 +1,87 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>网站后台使用文档</title>
+<link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="./js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="./css/style.css" rel='stylesheet' type='text/css' />
+<link href='./css/fonts.css' rel='stylesheet' type='text/css'>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+	<!--- Header Starts Here --->
+	<div class="header">
+		<div class="container">
+			<div class="logo">
+				<a href="index.html"><img src="./images/logo.png" alt=""/></a>
+			</div>
+			<div class="navigation">
+				<span class="menu"><img src="./images/nav.png" alt="" /></span>
+				<ul class="nav">
+					<li><a href="index.html">首页</a></li> <lable>/</lable>
+					<li><a href="apidoc.html">开发文档</a></li> <lable>/</lable>
+					<li><a href="errorcode.html">错误代码</a></li> <lable>/</lable>
+					<li><a href="apidownload.html">API示例代码下载</a></li> <lable>/</lable>
+					<li><a href="webdoc.html">网站后台使用文档</a></li> <lable>/</lable>
+					<li><a href="http://www.kqdama.com:8080/login" target="_blank">后台登陆</a></li>
+					<li><a href="price.html">价格表</a></li>
+				</ul>
+			</div>
+			<script>
+					$( "span.menu" ).click(function() {
+					  $( ".navigation ul.nav" ).slideToggle( "slow", function() {
+					    // Animation complete.
+					  });
+					});
+				</script>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- Content starts Here --->
+	<div class="content">
+		<div class="container">
+			<span class="line"></span><a href="#" class="line-anchor">网站后台使用文档</a><span class="line"></span>
+				<div class="clearfix"></div>
+			<div class="content-middle">
+				<ol>
+<li>访问<a href="http://www.kqdama.com:8080/reg" target="_blank">http://www.kqdama.com:8080/reg</a>注册新用户 <br>
+如下图示，输入用户名、密码、验证码即可，左下角有帮助文档和登陆的链接： <br>
+<img src="http://ww1.sinaimg.cn/mw690/780dc56fjw1ek8x5t77xfj20ck0enwft.jpg" alt="此处输入图片的描述" title=""></li>
+<li>访问<a href="http://www.kqdama.com:8080/login" target="_blank">http://www.kqdama.com:8080/login</a>登陆 <br>
+如下图示，输入用户名和密码登陆： <br>
+<img src="http://ww3.sinaimg.cn/mw690/780dc56fjw1ek8xg8wavgj20d80a8t9m.jpg" alt="此处输入图片的描述" title=""></li>
+<li>登陆后，用支付宝进行充值，选择常用功能-&gt;账户充值，选择金额后，点击“去支付宝充值”即可，请注意支付宝账户为er6e@qq.com，目前“跳转到支付宝”充值功能只支持IE浏览器。充值结束后，在页面下方填写该次充值的交易号（或流水号）和交易金额，之后点击“提交”即可，系统将在一分钟内处理充值结果，如有问题，请联系管理员。 <br>
+<img src="http://ww3.sinaimg.cn/mw690/780dc56fjw1ekceqzw5nmj20g20icabu.jpg" alt="此处输入图片的描述" title=""></li>
+<li>充值结束后，在常用功能-&gt;用户信息中可以看到用户的基本信息，其中<strong>“剩余调用次数”为当前用户还可以调用的次数，比如下图中用户还可以成功调用8222682次，“成功调用次数”为该用户进行的成功调用的次数，“已经调用次数”表示该用户历史调用次数总和，包括成功的识别调用和失败的识别调用次数之和。</strong> <br>
+需要注意的是<strong>“令牌”值，该值为冒号后面的字符串，不含空格，在用户注册时会生成，为每个作者用户唯一的识别码</strong>。之后作者下面的子用户要进行识别调用时，要传递作者的“令牌”才可以成功进行调用，否则会返回“1006”错误，具体错误信息请参考API说明文档。 <br>
+<img src="http://ww4.sinaimg.cn/mw690/780dc56fjw1ekc3wabfszj20h00aodgw.jpg" alt="此处输入图片的描述" title=""></li>
+<li>在常用功能-&gt;交易明细中可以看到用户的充值交易记录，可以看到该次充值对应的充值金额，调用次数，时间，结果，在注释里如果充值成功，会显示“提交正确”，如果不成功，会显示相应的失败原因，比如交易号错误、交易号与金额不匹配、交易号重复提交等等。 <br>
+<img src="http://ww2.sinaimg.cn/mw690/780dc56fjw1ek8x5v5hvzj2117075jsp.jpg" alt="此处输入图片的描述" title=""></li>
+<li>在账户操作-&gt;查看子账户中可以查看当前的子账户，如下图示，基本信息类似，在最右边一列有修改和删除操作，注意删除子用户记录将不能恢复，请谨慎删除。 <br>
+<img src="http://ww3.sinaimg.cn/mw690/780dc56fjw1ek8xvj2tlnj212y09ngn7.jpg" alt="此处输入图片的描述" title=""> <br>
+点击修改子用户后，出现下图所示界面，可以修改的内容有子用户的密码和增加剩余调用次数，注意，这里“增加剩余调用次数”中填写的内容是该用户要增加的次数，比如填写1000，那么该子用户的剩余调用次数就在原来的基础上增加1000，当前用户的剩余调用次数就会减少1000。如果填写-1000，那么该子用户的剩余调用次数就在原来的基础上减少1000，当前用户的剩余调用次数就会增加1000，前提是子用户的剩余调用次数大于等于1000。 <br>
+<img src="http://ww2.sinaimg.cn/mw690/780dc56fjw1ek8x5sbwhxj20ey0bg0tm.jpg" alt="此处输入图片的描述" title=""></li>
+<li>在账户操作-&gt;新加子账户中可以添加子账户，如下图示，新加时只需输入用户名和密码，剩余调用次数默认初始化为0 <br>
+<img src="http://ww3.sinaimg.cn/mw690/780dc56fjw1ek8x5oxinrj20ev0bcmxy.jpg" alt="此处输入图片的描述" title=""></li>
+</ol>
+			</div>
+				
+		</div>
+	</div>
+	<!-- Content starts Here --->
+	<div class="footer">
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+$def with (dtuinfo,dtu_id)
+
+<!DOCTYPE html PUBLIC "-//W6C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w6.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset="UTF-5" />
+<title>DTU1003</title>
+<!--                       CSS                       -->
+<!-- Reset Stylesheet -->
+<link rel="stylesheet" href="../static/css/reset.css" type="text/css" media="screen" />
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="../static/css/style.css" type="text/css" media="screen" />
+<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
+<link rel="stylesheet" href="../static/css/invalid.css" type="text/css" media="screen" />
+<!--                       Javascripts                       -->
+<!-- jQuery <script type="text/javascript" src="../static/scripts/jquery2.3.2.min.js"></script> -->
+
+<!-- jQuery Configuration -->
+<script type="text/javascript" src="../static/scripts/simpla.jquery.configuration.js"></script>
+<!-- Facebox jQuery Plugin -->
+<script type="text/javascript" src="../static/scripts/facebox.js"></script>
+<!-- jQuery WYSIWYG Plugin -->
+<script type="text/javascript" src="../static/scripts/jquery.wysiwyg.js"></script>
+<!-- jQuery Datepicker Plugin -->
+<script type="text/javascript" src="../static/scripts/jquery.datePicker.js"></script>
+<script type="text/javascript" src="../static/scripts/jquery.date.js"></script>
+
+<script type="text/javascript">
+
+$dtu_id = 'dtu1001';
+//var url_server = "http://35.166.81.188:8001/";
+var url_server = "http://122.224.118.206:8000/dtu1001/";
+
+var url_page4 = url_server + "pageX";
+
+function queryPage1(queryid){
+    var url = url_server + "page1?reset1=0&reset2=0&dtuid="+queryid+"&mcr_angle_set_1=-1&mcr_angle_set_2=-1&mcr_auto_flag_set_1=-1&mcr_auto_flag_set_2=-1";
+    window.open(url,"_self");
+}
+function queryPage2(queryid){
+    var url = url_server +  "page2?dtuid="+queryid;
+    window.open(url,"_self");
+}
+function queryPage3(queryid){
+    var url = url_server + "page3?starttime=-1&endtime=-1&dtuid="+queryid;
+    window.open(url,"_self");
+}
+function queryPage4(queryid){
+    var url = url_server + "page4?dtuid="+queryid;
+    window.open(url,"_self");
+}
+function queryPageX(queryid){
+    var url = url_server + "pageX?dtuid="+queryid;
+    window.open(url,"_self");
+}
+</script>
+ 
+</head>
+
+<body>
+<div id="body-wrapper">
+  <!-- Wrapper for the radial gradient background -->
+  <div id="sidebar">
+    <div id="sidebar-wrapper">
+      <!-- Sidebar with logo and menu -->
+      <!-- Sidebar Profile links -->
+      <ul id="main-nav" style="position:relative;top:100px;">
+        <li> 
+          <ul>
+            <li><a onclick="javascript:queryPage1('$dtu_id');">状态显示</a></li>
+            <li><a onclick="javascript:queryPage2('$dtu_id');">历史事件</a></li>
+            <li><a onclick="javascript:queryPage3('$dtu_id');">历史曲线</a></li>
+            <li><a onclick="javascript:queryPage4('$dtu_id');">参数设置</a></li>
+			<li><a onclick="javascript:queryPageX('$dtu_id');">解锁闭锁</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- End #main-nav -->
+    </div>
+  </div>
+
+  <!-- End #sidebar -->
+  <div id="main-content">
+    <!-- Main Content Section with everything -->
+	<p align="center" style="font-size:200%;">DTU1001</p>
+	<hr />
+
+    <table>
+		<tr width="100%">
+			<td align="center" width="50%"><button class="button" onclick="javascript:remoteopen('$dtu_id');">远程解锁</button></td>
+			<td align="center" width="50%"><button class="button" onclick="javascript:remoteclose('$dtu_id');">远程闭锁</button></td>
+		</tr>
+    </table>
+    
+    <!-- End .content-box -->
+    <div class="clear"></div>
+    <script>
+
+        function remoteclose(queryid)
+        {
+			var data={
+               'type':7,
+               'dtuid':queryid
+               }
+            post(url_page4,data);
+        }
+        
+        function usedefaultconfig(queryid)
+        {
+			var data={
+               'type':8,
+               'dtuid':queryid
+               }
+            post(url_page4,data);
+        }
+		
+        function post(URL, PARAMS) {        
+            var temp = document.createElement("form");        
+            temp.action = URL;        
+            temp.method = "post";        
+            temp.style.display = "none";        
+            for (var x in PARAMS) {        
+                var opt = document.createElement("textarea");        
+                opt.name = x;        
+                opt.value = PARAMS[x];        
+                // alert(opt.name)        
+                temp.appendChild(opt);        
+            }        
+            document.body.appendChild(temp);        
+            temp.submit();        
+            return temp;        
+        }  
+    </script>
+
+    <div id="footer"> <small>
+      <!-- Remove this notice or replace it with whatever you want -->
+      &#172; Copyright 2017 YFW | Powered by ngnix </small> </div>
+    <!-- End #footer -->
+  </div>
+  <!-- End #main-content -->
+</div>
+</body>
+<!-- Download From www.exet.tk-->
+</html>

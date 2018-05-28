@@ -1,0 +1,425 @@
+$def with (power_factor_1_array,power_factor_2_array,power_factor_3_array,voltage_1_array,voltage_2_array,voltage_3_array,current_1_array,current_2_array,current_3_array,reactive_power_1_array,reactive_power_2_array,mcr_current_A_1_array,mcr_current_B_1_array,mcr_current_C_1_array,mcr_current_A_2_array,mcr_current_B_2_array,mcr_current_C_2_array,dtu_id)
+
+<!DOCTYPE html PUBLIC "-//W6C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="firstpage" xmlns="http://www.w6.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset="UTF-5" />
+<title>DTU1002</title>
+<!--                       CSS                       -->
+<!-- Reset Stylesheet -->
+<link rel="stylesheet" href="../static/css/reset.css" type="text/css" media="screen" />
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="../static/css/style.css" type="text/css" media="screen" />
+<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
+<link rel="stylesheet" href="../static/css/invalid.css" type="text/css" media="screen" />
+<!--                       Javascripts                       -->
+<!-- jQuery <script type="text/javascript" src="../static/scripts/jquery2.3.2.min.js"></script> -->
+
+<!-- jQuery Configuration -->
+<script type="text/javascript" src="../static/scripts/simpla.jquery.configuration.js"></script>
+<!-- Facebox jQuery Plugin -->
+<script type="text/javascript" src="../static/scripts/facebox.js"></script>
+<!-- jQuery WYSIWYG Plugin -->
+<script type="text/javascript" src="/../static/scripts/jquery.wysiwyg.js"></script>
+<!-- jQuery Datepicker Plugin -->
+<script type="text/javascript" src="../static/scripts/jquery.datePicker.js"></script>
+<script type="text/javascript" src="../static/scripts/jquery.date.js"></script>
+<script type="text/javascript" src="../static/scripts/highcharts.js"></script>
+<script type="text/javascript" src="../static/scripts/exporting.js"></script>
+
+
+<script type="text/javascript">
+
+$dtu_id = 'dtu1001';
+//var url_server = "http://35.166.81.188:8001/";
+var url_server = "http://122.224.118.206:8000/dtu1002/";
+
+function queryPage1(queryid){
+    var url = url_server + "page1?reset1=0&reset2=0&dtuid="+queryid+"&mcr_angle_set_1=-1&mcr_angle_set_2=-1&mcr_auto_flag_set_1=-1&mcr_auto_flag_set_2=-1";
+    window.open(url,"_self");
+}
+function queryPage2(queryid){
+    var url = url_server +  "page2?dtuid="+queryid;
+    window.open(url,"_self");
+}
+function queryPage3(queryid){
+    var url = url_server + "page3?starttime=-1&endtime=-1&dtuid="+queryid;
+    window.open(url,"_self");
+}
+function queryPage4(queryid){
+    var url = url_server + "page4?dtuid="+queryid;
+    window.open(url,"_self");
+}
+
+</script>
+
+</head>
+<body>
+<div id="body-wrapper">
+  <!-- Wrapper for the radial gradient background -->
+  <div id="sidebar">
+    <div id="sidebar-wrapper">
+      <!-- Sidebar with logo and menu -->
+      <!-- Sidebar Profile links -->
+      <ul id="main-nav">
+        <!-- Accordion Menu -->
+        <li> 
+          <ul>
+            <li><a onclick="javascript:queryPage1('$dtu_id');">状态显示</a></li>
+            <li><a onclick="javascript:queryPage2('$dtu_id');">历史事件</a></li>
+            <li><a onclick="javascript:queryPage3('$dtu_id');">历史曲线</a></li>
+            <li><a onclick="javascript:queryPage4('$dtu_id');">参数设置</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+      <!-- End #main-nav -->
+    </div>
+  </div>
+
+  <!-- End #sidebar -->
+  <div id="main-content">
+    <!-- Main Content Section with everything -->
+    <div id="containers">
+        <div id="container1" style="min-width:400px;height:400px"></div> 
+    </div>
+    <table>
+        <tr>
+        <td>start:<input  id="starttime"></input></td><td>end:<input  id="endtime"></input></td>
+        </tr>
+    </table>
+    <form>
+    <table>
+    <tr>
+        <td><button type="button" onclick="javascript:chooseContainer(1);">功率因数</button></td>
+        <td><button type="button" onclick="javascript:chooseContainer(2);">母线U/I</button></td>
+        <td><button type="button" onclick="javascript:chooseContainer(3);">磁控电压</button></td>
+        <td><button type="button" onclick="javascript:chooseContainer(4);">磁控1电流</button></td>
+        <td><button type="button" onclick="javascript:chooseContainer(5);">磁控2电流</button></td>
+    </tr>
+    </table>
+    </form>
+    <script>
+
+function test(i)
+{
+    var power_factor_1_array=varbj.power_factor_1_array;
+    var power_factor_2_array=varbj.power_factor_2_array;
+    var power_factor_3_array=varbj.power_factor_3_array;
+    var voltage_1_array=varbj.power_factor_1_array;
+    var voltage_2_array=varbj.power_factor_2_array;
+    var voltage_3_array=varbj.power_factor_3_array;
+    var current_1_array=varbj.power_factor_1_array;
+    var current_2_array=varbj.power_factor_2_array;
+    var current_3_array=varbj.power_factor_3_array;
+    var reactive_power_1_array=varbj.power_factor_1_array;
+    var reactive_power_2_array=varbj.power_factor_2_array;
+    var mcr_current_A_1_array=varbj.mcr_current_A_1_array;
+    var mcr_current_B_1_array=varbj.mcr_current_B_1_array;
+    var mcr_current_C_1_array=varbj.mcr_current_C_1_array;
+    var mcr_current_A_2_array=varbj.mcr_current_A_2_array;
+    var mcr_current_B_2_array=varbj.mcr_current_B_2_array;
+    var mcr_current_C_2_array=varbj.mcr_current_C_2_array;
+    var updatetime_array=varbj.updatetime_array;
+    if(parseInt(i)==parseInt(1))
+    {
+    var chart1 = new Highcharts.Chart('container1', {
+    title: {
+        text: '不同时刻波动情况',
+        x: -20
+    },
+    subtitle: {
+        text: '数据来源: database',
+        x: -20
+    },
+    xAxis: {
+        categories: updatetime_array//['', '', '', '', '', '', '', '', '', '', '', '']
+    },
+    yAxis: {
+        title: {
+            text: '数值'
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }]
+    },
+    tooltip: {
+        valueSuffix: ''
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+    },
+    series: [{
+        name: '1段功率因数',
+        data: power_factor_1_array//[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+    }, {
+        name: 'II段功率因数',
+        data: power_factor_2_array//[-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+    }, {
+        name: 'III段功率因数',
+        data: power_factor_3_array//[-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+    }]
+});
+
+}else if(parseInt(i)==parseInt(2))
+{
+    var chart2 = new Highcharts.Chart('container2', {
+    title: {
+        text: '不同时刻波动情况',
+        x: -20
+    },
+    subtitle: {
+        text: '数据来源: database',
+        x: -20
+    },
+    xAxis: {
+        categories: updatetime_array//['', '', '', '', '', '', '', '', '', '', '', '']
+    },
+    yAxis: {
+        title: {
+            text: '数值'
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }]
+    },
+    tooltip: {
+        valueSuffix: ''
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+    },
+    series: [{
+        name: 'I段母线电压',
+        data: voltage_1_array//[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+    }, {
+        name: 'I段母线电流',
+        data: current_1_array//[-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+    }, {
+        name: 'II段母线电压',
+        data: voltage_2_array//[-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+    }, {
+        name: 'II段母线电流',
+        data: current_2_array//[3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+    }, {
+        name: 'III段母线电压',
+        data: voltage_3_array//[-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+    }, {
+        name: 'III段母线电流',
+        data: current_3_array//[3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+    }]
+});
+
+}else if(parseInt(i)==parseInt(3))
+{
+    var chart3 = new Highcharts.Chart('container3', {
+    title: {
+        text: '不同时刻波动情况',
+        x: -20
+    },
+    subtitle: {
+        text: '数据来源: database',
+        x: -20
+    },
+    xAxis: {
+        categories: updatetime_array//['', '', '', '', '', '', '', '', '', '', '', '']
+    },
+    yAxis: {
+        title: {
+            text: '数值'
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }]
+    },
+    tooltip: {
+        valueSuffix: ''
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+    },
+    series: [{
+        name: 'I段磁控电压',
+        data: reactive_power_1_array//[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+    }, {
+        name: 'II段磁控电压',
+        data: reactive_power_2_array//[-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+    }]
+});
+
+}else if(parseInt(i)==parseInt(4))
+{
+    var chart4 = new Highcharts.Chart('container4', {
+    title: {
+        text: '不同时刻波动情况',
+        x: -20
+    },
+    subtitle: {
+        text: '数据来源: database',
+        x: -20
+    },
+    xAxis: {
+        categories: updatetime_array//['', '', '', '', '', '', '', '', '', '', '', '']
+    },
+    yAxis: {
+        title: {
+            text: '数值'
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }]
+    },
+    tooltip: {
+        valueSuffix: ''
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+    },
+    series: [{
+        name: 'I段A相磁控电流',
+        data: mcr_current_A_1_array//[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+    }, {
+        name: 'I段B相磁控电流',
+        data: mcr_current_B_1_array//[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+    },{
+        name: 'I段C相磁控电流',
+        data: mcr_current_C_1_array//[-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+    }]
+});
+
+}else if(parseInt(i)==parseInt(5))
+{
+    var chart5 = new Highcharts.Chart('container5', {
+    title: {
+        text: '不同时刻波动情况',
+        x: -20
+    },
+    subtitle: {
+        text: '数据来源: database',
+        x: -20
+    },
+    xAxis: {
+        categories: updatetime_array//['', '', '', '', '', '', '', '', '', '', '', '']
+    },
+    yAxis: {
+        title: {
+            text: '数值'
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }]
+    },
+    tooltip: {
+        valueSuffix: ''
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+    },
+    series: [{
+        name: 'II段A相磁控电流',
+        data: mcr_current_A_2_array//[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+    }, {
+        name: 'II段B相磁控电流',
+        data: mcr_current_B_2_array//[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+    },{
+        name: 'II段C相磁控电流',
+        data: mcr_current_C_2_array//[-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+    }]
+});
+
+}
+}
+
+function get_time_str(Time){
+var month = Time.getMonth() + 1;
+return Time.getFullYear()+'-'+month+'-'+Time.getDate()+ ' ' + 
+       Time.getHours()+':'+Time.getMinutes()+':'+Time.getSeconds();
+}
+
+var time1=new Date();
+var time2=new Date(time1.getTime()-600000); // 10 minutes
+document.getElementById("starttime").value=get_time_str(time2);
+document.getElementById("endtime").value=get_time_str(time1);
+
+function createXHR() {
+    if (window.XMLHttpRequest) {
+        return new XMLHttpRequest();
+    } else {
+        return new ActiveXObject('MicroSoft.XMLHTTP');
+    }
+}
+
+function chooseContainer(i)
+{
+     var starttime = document.getElementById("starttime").value;
+     var endtime = document.getElementById("endtime").value;
+     var url = url_server + "page33?starttime=-1&endtime=-1&dtuid="+"$dtu_id";
+     if(starttime!=''&&endtime!='')
+     {
+         url = url_server + "page33?starttime="+starttime+"&endtime="+endtime+"&dtuid="+"$dtu_id";
+         //window.open(url,"_self");
+     }
+     else{
+           var time1=new Date();
+           var time2=new Date(time1.getTime()-600000); // 10 minutes
+           starttime = get_time_str(time2);
+           endtime = get_time_str(time1);
+           document.getElementById("starttime").value=starttime;
+           document.getElementById("endtime").value=endtime;
+           url = url_server + "page33?starttime="+starttime+"&endtime="+endtime+"&dtuid="+"$dtu_id";
+     }
+     var container="container"+i;
+     document.getElementById("containers").innerHTML="<div id=\""+container+"\" style=\"min-width:400px;height:400px\"></div>";
+         //window.showModalDialog(url,"_self");
+     var xhr = createXHR();
+     xhr.onreadystatechange = function() {
+     if (xhr.readyState == 4) {
+     if (xhr.status == 200) {
+        var container="container"+i;
+        //alert(xhr.responseText);
+        varbj = eval('(' + xhr.responseText + ')');
+        test(i,varbj);
+        }
+     }
+    }
+    xhr.open('get', url, true);
+    xhr.send(null);
+}
+</script> 
+
+<div class="clear"></div>
+<div id="footer"> <small>
+      <!-- Remove this notice or replace it with whatever you want -->
+      &#172; Copyright 2017 YFW | Powered by ngnix </small> </div>
+    <!-- End #footer -->
+</div>
+  <!-- End #main-content -->
+</div>
+</body>
+<!-- Download From www.exet.tk-->
+</html>

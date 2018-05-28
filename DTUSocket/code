@@ -1,0 +1,12 @@
+2) 启动命令
+cd /home/yh/DTUSocket/
+python socketServer.py &
+python socketServer.py
+3) 重启命令
+a. 先杀死当前进程
+
+ps -ef | grep socketServer | grep -v grep | grep -v vim | cut -c 9-15 | xargs kill -9
+
+lsof -i:端口号 用于查看某一端口的占用情况，比如查看8000端口使用情况，lsof -i:8001
+netstat -tunlp |grep 端口号，用于查看指定的端口号的进程情况，如查看8000端口的情况，
+sudo netstat -tunlp |grep 8001
